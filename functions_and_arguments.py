@@ -147,7 +147,7 @@ print(sku.uppercase()) # the method is upper() (attributeerror)
 
 price = 10
 print(price.numerator()) 
-print((price).numerator) # Int error is not callable, need to put it in paranthesis
+print((price).numerator()) # Int error is not callable, need to put it in paranthesis
 
 def label(product,price):
     return product + ": $" + str(price)
