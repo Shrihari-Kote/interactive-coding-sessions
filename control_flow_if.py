@@ -151,3 +151,42 @@ def can_legally_drink_with_and(country,age):
 age = 20
 status = "Adult" if age >=18 else "Minor"
 # VALUE_IF_TRUE if CONDITION else VALUE_IF_FALSE
+# This trick number one
+
+# Trick number two, very yseful and common:
+# A use case for conditional logic blocks is when you need to output one value
+# depending on another value:
+# Let's say I want to output the currency of country, depending on the country name:
+# of course you can do:
+
+def get_currency(country_name):
+     if country_name == "France":
+          return "Euro"
+     elif country_name == "USA":
+          return "Dollar"
+     elif country_name == "Canada":
+          return "Canadian Dollar"
+     # Many countries later:
+     else:
+          return "Unknown Country"
+
+# The superior solution: Use a dictionary
+country_currencies = {
+     "USA":"Dollars",
+     "France": "Euros",
+     "Canada": "Canadian Dollars",
+     "UK": "British Pounds",
+     "Japan": "Yen",
+     "Russia": "Rubles",
+     "India": "Rupees"
+}
+
+# How do we use this?
+country_currencies["India"] # Achieves the same goal as a conditional block
+# But it only works if you want to to match the same variable to different possible values
+
+# The caveat
+country_currencies["Iran"]
+# Attempting to do this results in an error, whereas the function results in "unknown country"
+# ... Unless we use the .get() method we saw before!
+country_currencies.get("Iran","Country not found")
