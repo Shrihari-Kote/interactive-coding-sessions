@@ -66,3 +66,85 @@ for (food,taste) in zip(list_of_foods,list_of_tastes):
 list_of_colors = ['green','red','red']
 for (food,taste,color) in zip(list_of_foods,list_of_tastes,list_of_colors):
     print(f"A {food} is {color} and tastes {taste}")
+
+# Let's talk about range()
+
+for i in [1,2,3,4,5]: # i is the STEP VARIABLE, [1,2,3,4,5] is the iterable
+    print(i) # i is going to take, in turn, the value of each of
+    #the elements in the iterable
+
+# Now imagine we want to get all the numbers from 0 to 1000:
+# Writing the loop the old way sucks, because you'd have to write out each number
+# manually, which defeats the whole point
+
+# Enter range()
+# Range is a funciton that creates an iterable for you that you can loop on
+# Range takes three arguments (start, stop, step)
+# Start is optional, defaults to 0
+# Step is optional, and defaults to 1
+for i in range(1001): # This prints every number between 0 and 1000 (1001 not included)
+    print(i)
+
+# The start, stop, step system is just like slicing from lists
+my_list = [1,2,3,4,5,6,7,8,9,10]
+my_list[0:4]
+my_list[::2]
+for i in range(0,1000,2):
+    print(i)
+
+# All there is to know about range: a convenient way
+# of getting an iterable of numbers to loop on
+
+# The final thing he wants to show us is something called list comprehensions
+
+# Let's say we want the square of every number between 0 and 9
+
+my_squares = []
+for i in range(0,10,1): # Could've done range(10) that's more compact
+    my_squares.append(i**2)
+
+my_squares
+
+# This task, creating a new list from an existing iterable, is EXTREMELY COMMON
+# in Python
+# That's what a shortcut called LIST COMPREHENSION is doing
+# I could have achieved the same thing by typing:
+my_squares = [i**2 for i in range(10)]
+
+# Back in my day we'd have solved this with a one-liner in PERL! WITH A BOX OF SCRAPS
+
+# A list comprehension is surrounded by square brackets
+# This is because we are creating a list
+# Then you see AN EXPRESSION: i**2. This defines how the step variable is going
+# to be modified to create the elements of the list
+# Finally, you see the loop itself: for STEP_VARIABLE in ITERABLE
+# Note, there is no colon here
+my_squares
+
+my_list = [i.upper() for i in "Shrihari"]
+my_list
+
+# One final thing on list comprehension:
+# We can add, after the (for STEP_VARIABLE in ITERABLE) an optional IF statement
+# that filters the leemnts of the list
+
+my_filtered_squares = [i**2 for i in range(10) if i**2 < 30]
+my_filtered_squares
+
+# Very common use case for this filter:
+paths = ["data.csv","report.pdf","summary.csv","image.png","notes.txt","data2.csv"]
+# Lots of file names with different extensions
+
+# Let's say I just want to keep the .csv files
+
+my_csvs = [i for i in paths if i.endswith("csv")]
+my_csvs
+
+# How could I write a for loop that would do the same job:
+my_csvs2 = []
+
+for i in paths:
+    if i.endswith("csv"):
+        my_csvs2.append(i)
+
+print(my_csvs2)
